@@ -11,11 +11,11 @@
 
 
     // Interface with both drawing and resizing methods
-    interface IShape
-    {
-        void Draw();
-        void Resize(int width, int height);
-    }
+    //interface IShape
+    //{
+    //    void Draw();
+    //    void Resize(int width, int height);
+    //}
     public interface IDraw
     {
         void Draw();
@@ -24,11 +24,15 @@
     {
         void Resize(int width, int height);
     }
-    public class Shape : IDraw, IResizeable
+    public interface IShape : IDraw, IResizeable
+    {
+
+    }
+    public class Circle : IShape
     {
         public void Draw()
         {
-            Console.WriteLine($"Draw {typeof(Shape)}");
+            Console.WriteLine($"Draw {typeof(Circle)}");
         }
 
         public void Resize(int width, int height)
@@ -40,7 +44,10 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            IShape circle = new Circle();
+            circle.Draw();
+            circle.Resize(5, 5);
+
         }
     }
 }
